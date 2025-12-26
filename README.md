@@ -1,221 +1,78 @@
-# Project 2 – Machine Learning Modeling and Pipeline (MVP)
+# Project 2 – Machine Learning Modeling and Pipeline  
 ## Predicting Flight Status Using Operational, Holiday, and Passenger Traffic Data
 
-This repository contains the Minimum Viable Project (MVP) for Project 2, focused on
-building an end-to-end machine learning pipeline to predict flight status outcomes
-(On-Time, Delayed, Cancelled) before departure.
+## Project Overview
+This project presents an end-to-end machine learning solution developed as part of **Project 2: Machine Learning Modeling and Pipeline**.  
+The objective is to predict airline flight status outcomes (**On Time, Delayed, Cancelled**) prior to departure using operational airline data augmented with global holiday information and passenger traffic patterns.
 
-The project follows the CRISP-DM methodology and emphasizes reproducibility,
-robust preprocessing, and thoughtful interpretation of results.
-
----
-
-## 📌 Business Problem
-Flight delays and cancellations create significant operational and financial challenges
-for airlines. Early identification of high-risk flights can support proactive scheduling,
-resource allocation, and passenger communication.
-
-The objective of this project is to evaluate whether airline operational data,
-augmented with global holidays and passenger traffic information, can be used
-to predict flight status outcomes.
+The project emphasizes reproducibility, interpretability, and methodological rigor, following industry best practices and the **CRISP-DM** data science framework.
 
 ---
 
-## 📊 Datasets
-This project integrates three datasets:
-
-1. **Airline Operational Dataset**
-   - Passenger demographics
-   - Airport and route information
-   - Flight departure date
-   - Target variable: `Flight Status` (On-Time, Delayed, Cancelled)
-
-2. **Global Holidays Dataset (2010–2019)**
-   - Public and local holidays by country (ISO3)
-   - Used to model seasonal and holiday travel effects
-
-3. **Monthly Passenger Traffic Dataset (2010–2018)**
-   - Domestic, international, and total passenger volumes
-   - Used to create a seasonal congestion index
-
-All datasets are provided as CSV files and are loaded directly in the notebook.
+## BLUF (Bottom Line Up Front)
+Using a structured CRISP-DM approach, this project demonstrates that while seasonal demand and holiday-related features provide useful contextual signals, accurate early-stage flight disruption prediction is primarily constrained by the availability of granular operational data.  
+The final tuned Random Forest model achieved a weighted F1-score of approximately **0.34**, highlighting data limitations rather than modeling deficiencies.
 
 ---
 
-## 🧠 Methodology (CRISP-DM)
-The project follows the CRISP-DM lifecycle:
+## Business Problem
+Flight delays and cancellations generate significant operational, financial, and customer experience costs for airlines. These disruptions are often amplified during periods of high demand such as holidays and peak travel seasons.
 
-1. **Business Understanding**
-   - Define the prediction task and business objectives
-
-2. **Data Understanding**
-   - Inspect datasets, schema, and target distribution
-
-3. **Data Preparation**
-   - Clean data and handle missing values
-   - Engineer holiday and passenger traffic features
-   - Merge datasets using robust keys
-
-4. **Modeling**
-   - Baseline model: Logistic Regression
-   - Advanced model: Random Forest
-   - Scikit-learn Pipeline and ColumnTransformer used for reproducibility
-
-5. **Evaluation**
-   - Train/test split with stratification
-   - Stratified K-Fold cross-validation
-   - Classification reports and confusion matrix
+This project explores whether machine learning models trained on pre-departure operational data—enhanced with holiday timing and passenger traffic indicators—can provide actionable early-warning insights to support proactive airline decision-making.
 
 ---
 
-## ⚙️ Modeling Approach
-- **Logistic Regression** was used as a baseline benchmark.
-- **Random Forest** was used to capture non-linear interactions.
-- Weighted F1-score was used as the primary evaluation metric due to class balance.
-- Cross-validation was applied to assess model stability.
+## Data Sources
+The analysis integrates three datasets:
+
+- **Airline Dataset**  
+  Contains passenger demographics, airport information, route characteristics, pilot identifiers, and flight status labels.
+
+- **Global Holidays Dataset**  
+  Provides public holiday information across multiple countries. Holidays are treated as recurring annual events and matched by country, month, and day.
+
+- **Monthly Passenger Traffic Dataset**  
+  Includes aggregated domestic and international passenger volumes by country and month, used to construct a seasonal traffic congestion index.
+
+All datasets are included directly in this repository for reproducibility.
 
 ---
 
-## 📈 Results Summary
-- Both baseline and advanced models achieved weighted F1-scores close to **0.33**.
-- Cross-validation results were stable across folds.
-- Random Forest did not significantly outperform the baseline model.
+## Methodology
+This project follows the **CRISP-DM** framework:
 
-These results indicate that the primary limitation lies in the available feature set,
-as key operational drivers (e.g., weather, real-time congestion) are not present
-in the dataset.
+1. Business Understanding  
+2. Data Understanding  
+3. Data Preparation & Feature Engineering  
+4. Exploratory Data Analysis (EDA)  
+5. Modeling & Evaluation  
 
----
-
-## 🔍 Key Insights
-- Model complexity alone cannot compensate for limited predictive signal.
-- Feature relevance and data quality are critical for meaningful performance gains.
-- The pipeline and evaluation strategy are robust and reproducible.
-
----
-
-## ⚠️ Limitations
-- Synthetic dataset with limited real-world signal
-- Absence of key operational predictors
-- No hyperparameter tuning performed in the MVP stage
+Key methodological components include:
+- Feature engineering for holidays and seasonal passenger congestion
+- A reproducible **scikit-learn Pipeline** with `ColumnTransformer`
+- Baseline and advanced classification models
+- Stratified cross-validation and hyperparameter tuning
+- Transparent interpretation of model limitations
 
 ---
 
-## 🚀 Next Steps
-- Incorporate weather and real-time airport congestion data
-- Explore gradient boosting models (XGBoost, LightGBM)
-- Perform feature importance and interpretability analysis (SHAP)
+## Modeling Approach
+The following models were evaluated:
+
+- **Baseline Model:** Logistic Regression  
+- **Advanced Model:** Random Forest Classifier  
+
+Model evaluation was performed using **weighted F1-score**, appropriate for multi-class classification with balanced class distributions.  
+Hyperparameter tuning was conducted using `GridSearchCV`, and the final tuned Random Forest pipeline was selected as the final model.
+
+The trained pipeline was serialized for reproducibility.
 
 ---
 
-## 📂 Repository Structure
-# Project 2 – Machine Learning Modeling and Pipeline (MVP)
-## Predicting Flight Status Using Operational, Holiday, and Passenger Traffic Data
-
-This repository contains the Minimum Viable Project (MVP) for Project 2, focused on
-building an end-to-end machine learning pipeline to predict flight status outcomes
-(On-Time, Delayed, Cancelled) before departure.
-
-The project follows the CRISP-DM methodology and emphasizes reproducibility,
-robust preprocessing, and thoughtful interpretation of results.
-
----
-
-## 📌 Business Problem
-Flight delays and cancellations create significant operational and financial challenges
-for airlines. Early identification of high-risk flights can support proactive scheduling,
-resource allocation, and passenger communication.
-
-The objective of this project is to evaluate whether airline operational data,
-augmented with global holidays and passenger traffic information, can be used
-to predict flight status outcomes.
-
----
-
-## 📊 Datasets
-This project integrates three datasets:
-
-1. **Airline Operational Dataset**
-   - Passenger demographics
-   - Airport and route information
-   - Flight departure date
-   - Target variable: `Flight Status` (On-Time, Delayed, Cancelled)
-
-2. **Global Holidays Dataset (2010–2019)**
-   - Public and local holidays by country (ISO3)
-   - Used to model seasonal and holiday travel effects
-
-3. **Monthly Passenger Traffic Dataset (2010–2018)**
-   - Domestic, international, and total passenger volumes
-   - Used to create a seasonal congestion index
-
-All datasets are provided as CSV files and are loaded directly in the notebook.
-
----
-
-## 🧠 Methodology (CRISP-DM)
-The project follows the CRISP-DM lifecycle:
-
-1. **Business Understanding**
-   - Define the prediction task and business objectives
-
-2. **Data Understanding**
-   - Inspect datasets, schema, and target distribution
-
-3. **Data Preparation**
-   - Clean data and handle missing values
-   - Engineer holiday and passenger traffic features
-   - Merge datasets using robust keys
-
-4. **Modeling**
-   - Baseline model: Logistic Regression
-   - Advanced model: Random Forest
-   - Scikit-learn Pipeline and ColumnTransformer used for reproducibility
-
-5. **Evaluation**
-   - Train/test split with stratification
-   - Stratified K-Fold cross-validation
-   - Classification reports and confusion matrix
-
----
-
-## ⚙️ Modeling Approach
-- **Logistic Regression** was used as a baseline benchmark.
-- **Random Forest** was used to capture non-linear interactions.
-- Weighted F1-score was used as the primary evaluation metric due to class balance.
-- Cross-validation was applied to assess model stability.
-
----
-
-## 📈 Results Summary
-- Both baseline and advanced models achieved weighted F1-scores close to **0.33**.
-- Cross-validation results were stable across folds.
-- Random Forest did not significantly outperform the baseline model.
-
-These results indicate that the primary limitation lies in the available feature set,
-as key operational drivers (e.g., weather, real-time congestion) are not present
-in the dataset.
-
----
-
-## 🔍 Key Insights
-- Model complexity alone cannot compensate for limited predictive signal.
-- Feature relevance and data quality are critical for meaningful performance gains.
-- The pipeline and evaluation strategy are robust and reproducible.
-
----
-
-## ⚠️ Limitations
-- Synthetic dataset with limited real-world signal
-- Absence of key operational predictors
-- No hyperparameter tuning performed in the MVP stage
-
----
-
-## 🚀 Next Steps
-- Incorporate weather and real-time airport congestion data
-- Explore gradient boosting models (XGBoost, LightGBM)
-- Perform feature importance and interpretability analysis (SHAP)
+## Key Results
+- Best cross-validated weighted F1-score: **~0.34**
+- Performance improvements from model tuning were modest
+- Results indicate that predictive performance is primarily constrained by feature signal strength rather than algorithm complexity
 
 ---
 
