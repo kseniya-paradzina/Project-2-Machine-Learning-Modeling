@@ -78,7 +78,7 @@ The trained pipeline was serialized for reproducibility.
 
 ## 📂 Repository Structure
 ```
-├── Project2_MVP.ipynb
+├── Project_2_CRISP_DM_Flight_Status_Model.ipynb
 ├── Airline Dataset Updated - v2.csv
 ├── global_holidays.csv
 ├── monthly_passengers.csv
