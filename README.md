@@ -80,13 +80,13 @@ The trained pipeline was serialized for reproducibility.
 ```
 Project-2-Machine-Learning-Modeling/
 │
-├── Project_2_CRISP_DM_Flight_Status_Model.ipynb
+├── .gitignore
 ├── Airline Dataset Updated - v2.csv
-├── global_holidays.csv
-├── monthly_passengers.csv
-├── final_random_forest_pipeline.joblib
+├── Project_2_CRISP_DM_Flight_Status_Model.ipynb
 ├── README.md
-└── .gitignore
+├── final_random_forest_pipeline.joblib
+├── global_holidays.csv
+└── monthly_passengers.csv
 ```
 ---
 
